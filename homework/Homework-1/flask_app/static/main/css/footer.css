@@ -1,0 +1,8 @@
+/* Footer section styling */
+footer {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: green;
+    padding: 60px;
+}

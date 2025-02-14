@@ -1,0 +1,16 @@
+/* Reset margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* header banner */
+.banner {
+    width: 100vw; 
+    height: 10vh; 
+    background-image: url('/static/main/images/banner.jpg'); /* Ensure correct path */
+    background-size: cover; /* Ensures the image covers the header */
+    background-position: center;
+    background-repeat: no-repeat;
+}

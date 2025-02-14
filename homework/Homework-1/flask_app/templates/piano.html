@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piano</title>
+    <link rel="stylesheet" href="/static/main/css/header.css"> <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="/static/main/css/navbar.css">
+    <link rel="stylesheet" href="/static/main/css/main.css">
+    <link rel="stylesheet" href="/static/main/css/footer.css">
+    <link rel="stylesheet" href="/static/piano/css/piano.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="banner">
+    </header>
+
+    <!-- Site navigation bar-->
+    <nav class="navbar">
+        <div class="nav-title">CSE 482 - Homework 1</div>
+        
+        <!-- Hamburger menu -->
+        <div class="menu-icon">☰</div>
+    
+        <!-- Navbar Links -->
+        <ul class="nav-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li>
+                <a class="linkedin" href="https://www.linkedin.com/in/chinenye-nwogu-190615222/" target="_blank">
+                    <img class="linkedin-icon" src="/static/main/images/social-linkedin.png" alt="LinkedIn">  <!-- Use an icon here -->
+                    <span class="linkedin-text">LinkedIn</span> <!-- Text for smaller screens -->
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- The poem -->
+        <div class="poem">
+            <h1>Behold piano great and old, it's master slumbers in far off cold, If you wish to see anew, call out to it - we see you.</h1>
+        </div>
+
+        <!-- Piano -->
+        <section class="piano-container">
+            <h2>The Great Old One</h2>
+            <div class="piano">
+                <!-- White Keys -->
+                <div class="white-key" data-key="KeyA"></div> <!-- C -->
+                <div class="white-key" data-key="KeyS"></div> <!-- D -->
+                <div class="white-key" data-key="KeyD"></div> <!-- E -->
+                <div class="white-key" data-key="KeyF"></div> <!-- F -->
+                <div class="white-key" data-key="KeyG"></div> <!-- G -->
+                <div class="white-key" data-key="KeyH"></div> <!-- A -->
+                <div class="white-key" data-key="KeyJ"></div> <!-- B -->
+                <div class="white-key" data-key="KeyK"></div> <!-- C (next octave) -->
+                <div class="white-key" data-key="KeyL"></div> <!-- D (next octave) -->
+                <div class="white-key" data-key="Semicolon"></div> <!-- E (next octave) -->
+
+                <!-- Black Keys (Absolute positioning) -->
+                <div class="black-key" id="b1" data-key="KeyW"></div> <!-- C# -->
+                <div class="black-key" id="b2" data-key="KeyE"></div> <!-- D# -->
+                <div class="black-key" id="b3" data-key="KeyT"></div> <!-- F# -->
+                <div class="black-key" id="b4" data-key="KeyY"></div> <!-- G# -->
+                <div class="black-key" id="b5" data-key="KeyU"></div> <!-- A# -->
+                <div class="black-key" id="b6" data-key="KeyO"></div> <!-- C# (next octave) -->
+                <div class="black-key" id="b7" data-key="KeyP"></div> <!-- D# (next octave) -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p class="copyright"> © Chinenye Nwogu</p>
+    </footer>
+    
+    <script src="/static/main/js/navbar.js"></script>
+    <script src="/static/piano/js/piano.js"></script>
+</body>
+</html>

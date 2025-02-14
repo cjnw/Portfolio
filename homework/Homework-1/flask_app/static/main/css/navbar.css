@@ -1,0 +1,113 @@
+/* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Navbar Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #222;
+    height: 10vh;
+    width: 100vw;
+    padding: 0 5vw;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+/* Title */
+.nav-title {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    font-weight: bold;
+}
+
+/* Navigation Links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+/* Hide default list styles */
+.nav-links li {
+    margin-left: 3vw;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: clamp(0.8rem, 1.5vw, 1.2rem);
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Change opacity on hover */
+.nav-links a:hover {
+    opacity: 0.6;
+}
+
+/* LinkedIn Text */
+.linkedin {
+    margin-left: 2vw;
+    font-size: clamp(0.8rem, 1.5vw, 1.2rem);
+    font-weight: bold;
+}
+
+.linkedin-icon {
+    width: 24px;  /* Adjust as needed */
+    height: 24px;
+    display: inline-block;
+    vertical-align: middle; 
+}
+
+/* Show LinkedIn icon by default, hide text */
+.linkedin-text {
+    display: none;
+}
+
+/* Hide menu icon on large screens */
+.menu-icon {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+
+/* Responsive Navbar - Hide links below 650px */
+@media screen and (max-width: 650px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 10vh;
+        left: 0;
+        width: 100%;
+        background-color: #222;
+        padding: 10px 0;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+}
+
+/* Responsive - Hide icon & show text below 650px */
+@media screen and (max-width: 650px) {
+    .linkedin-icon {
+        display: none;
+    }
+    .linkedin-text {
+        display: inline;
+    }
+}

@@ -1,0 +1,144 @@
+/* Poem styling */
+.poem {
+    width: 80vw;
+    text-align: center;
+    font-style: italic;
+    font-size: 1.2em;
+    margin: 20px auto;
+}
+
+/* Piano container */
+.piano-container {
+    width: 80vw;
+    max-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+}
+
+/* Piano label */
+.piano-container h2 {
+    margin-bottom: 10px;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+/* Piano Container */
+.piano {
+    display: flex;
+    position: relative; /* Black keys will be positioned relative to this */
+    height: 200px;
+    width: 600px;
+    background: #222;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+/* White Keys */
+.white-key {
+    width: 50px;
+    height: 180px;
+    background-color: white;
+    border: 2px solid black;
+    position: relative;
+    margin: 0 2px;
+}
+
+/* Black Keys */
+.black-key {
+    width: 30px; /* Black keys should be narrower than white keys */
+    height: 100px;
+    background-color: black;
+    border-radius: 3px;
+    position: absolute;
+    top: 0; /* Align at the top of the piano */
+}
+
+/* Perfectly Adjusted Black Key Positions */
+#b1 { left: 56px; }  /* C# */
+#b2 { left: 108px; } /* D# */
+#b3 { left: 214px; } /* F# */
+#b4 { left: 266px; } /* G# */
+#b5 { left: 320px; } /* A# */
+#b6 { left: 428px; } /* C# (next octave) */
+#b7 { left: 480px; } /* D# (next octave) */
+
+/* Key Labels */
+.key-label {
+    position: absolute;
+    bottom: 5px; /* Keep the label at the bottom of the key */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+    background: white;
+    padding: 2px 4px;
+    border-radius: 4px;
+    display: none; /* Initially hidden */
+}
+
+/* Hide labels by default */
+.key-label {
+    display: none;
+}
+
+/* Show all labels when hovering over any key */
+.piano:hover .key-label {
+    display: block;
+}
+
+/* Fix labels for black keys */
+.black-key .key-label {
+    bottom: auto;  /* Remove the previous bottom positioning */
+    top: 50%;  /* Position the label in the middle of the black key */
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the label properly */
+    color: white; /* Keep text visible on black keys */
+    background: transparent; /* Remove background to blend in */
+    padding: 0;
+}
+
+.white-key,
+.black-key {
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+/* When hit push key down */
+.hit {
+    transform: translateY(2px) scale(0.98);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.5) inset;
+    background-color: #ccc;
+    /* or any other style you want */
+}
+
+.great-old-one {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    animation: fadeIn 3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Responsive Layout */
+@media (max-width: 650px) {
+    .piano {
+        width: 90vw;
+        height: 150px;
+    }
+    .white-key {
+        width: 8vw;
+    }
+    .black-key {
+        width: 5vw;
+    }
+}
