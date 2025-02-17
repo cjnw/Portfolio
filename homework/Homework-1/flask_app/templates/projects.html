@@ -19,7 +19,9 @@
         <div class="nav-title">CSE 482 - Homework 1</div>
         
         <!-- Hamburger menu -->
-        <div class="menu-icon">☰</div>
+        <div class="menu-icon">
+            <img src="/static/main/images/menu-bar.png" alt="hamburger">
+        </div>
     
         <!-- Navbar Links -->
         <ul class="nav-links">
@@ -28,7 +30,7 @@
             <li><a href="resume.html">Resume</a></li>
             <li>
                 <a class="linkedin" href="https://www.linkedin.com/in/chinenye-nwogu-190615222/" target="_blank">
-                    <img class="linkedin-icon" src="/static/main/images/social-linkedin.png" alt="LinkedIn">  <!-- Use an icon here -->
+                    <img class="linkedin-icon" src="/static/main/images/social-linkedin.png" alt="LinkedIn" loading="lazy">  <!-- Use an icon here -->
                     <span class="linkedin-text">LinkedIn</span> <!-- Text for smaller screens -->
                 </a>
             </li>
@@ -36,18 +38,21 @@
     </nav>
 
     <main>
+        <!-- Projects summary-->
         <div class="projects-intro">
             <h1>These are some of my projects</h1>
         </div>
+
+        <!-- Piano project information / two columns about my project -->
         <div class="projects-container">
             <div class="piano-image">
                 <a href="piano.html">
-                    <img src="/static/main/images/piano.jpeg" alt="Piano">
+                    <img src="/static/main/images/piano.jpeg" alt="Piano" loading="lazy">
                 </a>
             </div>
             <div class="projects-information">
                 <h2>Piano</h2>
-                <p>I developed a piano web app using javascript</p>
+                <p>I developed a piano web app using Javascript, HTML, and CSS.</p>
                 <a href="piano.html" class="projects-link">Click here</a>
             </div>
         </div>
@@ -55,10 +60,13 @@
     </main>
 
     <footer>
+        <!-- Copyright -->
         <p class="copyright"> © Chinenye Nwogu</p>
     </footer>
     
+    <!-- Script to make navbar responsive -->
     <script src="/static/main/js/navbar.js"></script>
+    <!-- Script to make piano interactive-->
     <script src="/static/piano/js/piano.js"></script>
 </body>
 </html>

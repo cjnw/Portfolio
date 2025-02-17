@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CJ Nwogu</title>
+    <title>Home</title>
     <link rel="stylesheet" href="/static/main/css/header.css"> <!-- Link to the external CSS file -->
     <link rel="stylesheet" href="/static/main/css/navbar.css">
     <link rel="stylesheet" href="/static/main/css/main.css">
@@ -19,16 +19,18 @@
         <div class="nav-title">CSE 482 - Homework 1</div>
         
         <!-- Hamburger menu -->
-        <div class="menu-icon">☰</div>
+        <div class="menu-icon">
+            <img src="/static/main/images/menu-bar.png" alt="hamburger" loading="lazy">
+        </div>
     
-        <!-- Navbar Links -->
+        <!-- Navbar links -->
         <ul class="nav-links">
             <li><a href="home.html">Home</a></li>
             <li><a href="projects.html">Projects</a></li>
-            <li><a href="resume.html">Resume</a></li>
+            <li><a href="/static/main/Nwogu_Chinenye.pdf">Resume</a></li>
             <li>
                 <a class="linkedin" href="https://www.linkedin.com/in/chinenye-nwogu-190615222/" target="_blank">
-                    <img class="linkedin-icon" src="/static/main/images/social-linkedin.png" alt="LinkedIn">  <!-- Use an icon here -->
+                    <img class="linkedin-icon" src="/static/main/images/social-linkedin.png" alt="LinkedIn" loading="lazy">  <!-- Use an icon here -->
                     <span class="linkedin-text">LinkedIn</span> <!-- Text for smaller screens -->
                 </a>
             </li>
@@ -36,32 +38,36 @@
     </nav>
 
     <main>
+
+        <!-- Two columns about me -->
         <div class="about-container">
             <!-- Photo -->
             <div class="about-photo">
-                <img src="/static/main/images/team-photo.jpg" alt="Your Name">
+                <img src="/static/main/images/team-photo.jpg" alt="Chinenye Nwogu" loading="lazy">
             </div>
     
             <!-- Description -->
             <div class="about-text">
-                <h2>CJ Nwogu</h2>
+                <h1>CJ Nwogu</h1>
                 <p class="description">
                 is a computer science senior at Michigan State University with a preference of software engineering. With experience in embedded software development, he is seeking full-time employment in industry.
                 </p>
             </div>
         </div>
     
-        <!-- Fun Fact -->
+        <!-- Fun fact -->
         <div class="fun-fact">
-            <h3>A fun fact about me</h3>
+            <h2>A fun fact about me</h2>
             <p>I've never lost a fight against a hippo</p>
         </div>
     </main>
 
     <footer>
+        <!-- Copyright-->
         <p class="copyright"> © Chinenye Nwogu</p>
     </footer>
     
+    <!-- Script to hide navbar behind menu icon -->
     <script src="/static/main/js/navbar.js"></script>
 </body>
 </html>
