@@ -1,0 +1,101 @@
+/* feedback.css */
+
+/* 1) Vertical "Feedback" button on the right edge */
+#feedbackToggleBtn {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg); 
+    transform-origin: right center; /* anchor rotation at the right edge */
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    z-index: 9999; /* above normal content */
+    letter-spacing: 0.0625rem;
+  }
+  
+  /* Make the button a bit narrower if you want a more “tab-like” look */
+  #feedbackToggleBtn {
+    width: 120px; 
+    text-align: center;
+  }
+  
+  /* 2) The dark overlay that covers the entire screen */
+  #feedbackFormOverlay {
+    display: none; /* hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* semi-transparent black */
+    z-index: 9998; 
+  }
+  
+  /* 3) The actual form container (dark box) centered within the overlay */
+  #feedbackForm {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #222; /* dark background */
+    padding: 2rem;
+    width: 30%;
+    border-radius: 8%;
+    box-shadow: 0 0 10% rgba(0,0,0,0.3);
+    color: #fff;
+  }
+  
+  /* Title styling */
+  #feedbackForm h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-weight: normal;
+    text-align: center;
+  }
+  
+  /* Labels and inputs */
+  #feedbackForm label {
+    display: block;
+    margin: 0.5rem 0 0.25rem;
+    font-size: 0.9rem;
+  }
+  
+  #feedbackForm input[type="text"],
+  #feedbackForm input[type="email"],
+  #feedbackForm textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 4%;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+    font-size: 0.95rem;
+  }
+  
+  /* Dark text fields with white text */
+  #feedbackForm input,
+  #feedbackForm textarea {
+    background: #333;
+    color: #fff;
+  }
+  
+  /* The SEND button */
+  #feedbackSubmitBtn {
+    display: block;
+    width: 100%;
+    padding: 0.6rem;
+    background: #007bff; /* bright blue */
+    border: none;
+    border-radius: 4%;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  #feedbackSubmitBtn:hover {
+    background: #0056b3; /* darker blue on hover */
+  }
+  

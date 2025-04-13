@@ -5,11 +5,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CJ Nwogu's personal page</title>
-  <link rel="stylesheet"   href="{{ url_for('static', filename='main/css/main.css') }}">
+  <link rel="stylesheet"    href="{{ url_for('static', filename='main/css/main.css') }}">
   <link rel="stylesheet" href="/static/main/css/header.css">
   <link rel="stylesheet" href="/static/main/css/navbar.css">
   <link rel="stylesheet" href="/static/main/css/footer.css">
   <link rel="stylesheet" href="/static/main/css/main.css">
+  <link rel="stylesheet" href="/static/main/css/chat.css">
   <link rel="stylesheet" href="/static/main/css/feedback.css">
   <link rel="shortcut icon" href="{{ url_for('static', filename='main/images/favicon.ico') }}">
   {% block extracss %}{% endblock %}
@@ -24,10 +25,13 @@
 
   <!-- Site navigation bar-->
   <nav class="navbar">
-      <div class="nav-title">
-        
-      </div>
-      
+    <div class="nav-title">
+      {% if user %}
+          <p>Logged in as {{ user }}</p>
+      {% else %}
+          <p>CSE 477 - Homework 3</p>
+      {% endif %}
+    </div>
       <!-- Hamburger menu -->
       <div class="menu-icon">
           <img src="/static/main/images/menu-bar.png" alt="hamburger" loading="lazy">
@@ -39,7 +43,11 @@
           <li><a href="/projects">Projects</a></li>
           <li><a href="/resume">Resume</a></li>
           <li><a href="/chat">Chat</a></li>
-          <li><a href="/login">Login</a></li>
+          {% if user %}
+              <li><a href="/logout">Logout</a></li>
+          {% else %}
+              <li><a href="/login">Login</a></li>
+          {% endif %}
           <li>
               <a class="linkedin" href="https://www.linkedin.com/in/chinenye-nwogu-190615222/" target="_blank">
                   <img class="linkedin-icon" src="/static/main/images/social-linkedin.png" alt="LinkedIn" loading="lazy">  <!-- Use an icon here -->
