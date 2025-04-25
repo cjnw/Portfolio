@@ -1,0 +1,122 @@
+/* General Styles */
+body {
+    background-color: #f8f9fa;
+}
+
+.card {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: none;
+}
+
+.card-header {
+    background-color: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+/* Grid Styles */
+.availability-grid {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.grid-header {
+    background-color: #f8f9fa;
+    font-weight: 600;
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.time-slot {
+    background-color: #f8f9fa;
+    padding: 10px;
+    text-align: right;
+    border-right: 1px solid #ddd;
+}
+
+.grid-cell {
+    transition: background-color 0.2s ease;
+    position: relative;
+}
+
+.grid-cell:hover {
+    background-color: #f0f0f0;
+}
+
+/* Mode Selector */
+.mode-selector {
+    margin-bottom: 20px;
+}
+
+.mode-btn {
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.mode-btn.active {
+    transform: scale(1.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Heatmap Overlay */
+.heatmap-overlay {
+    transition: background-color 0.2s ease;
+}
+
+/* Availability Status Styles */
+.availability-cell {
+    position: relative !important;
+    min-width: 100px !important;
+    height: 50px !important;
+    background-color: white !important;
+}
+
+.availability-cell .availability-status {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 1 !important;
+    transition: all 0.2s ease !important;
+    opacity: 0.3 !important;
+    pointer-events: none !important;
+    display: block !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.availability-cell .availability-status.available {
+    background-color: #51cf66 !important;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .availability-grid {
+        font-size: 0.9rem;
+    }
+    
+    .grid-header, .time-slot {
+        padding: 5px;
+    }
+    
+    .mode-btn {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Animation for Updates */
+@keyframes highlight {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.grid-cell.updated {
+    animation: highlight 0.5s ease;
+} 

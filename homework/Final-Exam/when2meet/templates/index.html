@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}When2Meet Extended{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 text-center">
+        <h1 class="display-4 mb-4">Welcome to When2Meet Extended</h1>
+        <p class="lead mb-4">A collaborative scheduling tool that helps groups find the best time to meet.</p>
+        
+        {% if not current_user.is_authenticated %}
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <a href="{{ url_for('login') }}" class="btn btn-primary btn-lg px-4 gap-3">Login</a>
+                <a href="{{ url_for('register') }}" class="btn btn-outline-secondary btn-lg px-4">Register</a>
+            </div>
+        {% else %}
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <a href="{{ url_for('dashboard') }}" class="btn btn-primary btn-lg px-4 gap-3">Go to Dashboard</a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Create Events</h5>
+                <p class="card-text">Create new events and invite participants to join your scheduling session.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Real-time Updates</h5>
+                <p class="card-text">See availability changes in real-time as participants mark their schedules.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Best Time Finder</h5>
+                <p class="card-text">Automatically identify the optimal meeting time based on group availability.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

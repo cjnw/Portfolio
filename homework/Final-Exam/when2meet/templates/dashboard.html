@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Your Events</h1>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createEventModal">
+        Create Event
+    </button>
+</div>
+
+<!-- Create Event Modal -->
+<div class="modal fade" id="createEventModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Create New Event</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <form method="POST" action="{{ url_for('create_event') }}">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="event_name" class="form-label">Event Name</label>
+                        <input type="text" class="form-control" id="event_name" name="event_name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="start_date" class="form-label">Start Date</label>
+                        <input type="date" class="form-control" id="start_date" name="start_date" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="end_date" class="form-label">End Date</label>
+                        <input type="date" class="form-control" id="end_date" name="end_date" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="start_time" class="form-label">Start Time</label>
+                        <input type="time" class="form-control" id="start_time" name="start_time" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="end_time" class="form-label">End Time</label>
+                        <input type="time" class="form-control" id="end_time" name="end_time" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="invitees" class="form-label">Invitees (comma-separated emails)</label>
+                        <input type="text" class="form-control" id="invitees" name="invitees">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Create Event</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h4>Events You Created</h4>
+            </div>
+            <div class="card-body">
+                <div class="list-group">
+                    {% for event in created_events %}
+                    <a href="{{ url_for('event', event_id=event.id) }}" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">{{ event.name }}</h5>
+                            <small>{{ event.participant_count }} participants</small>
+                        </div>
+                        <p class="mb-1">
+                            {{ event.start_date.strftime('%b %d') }} - {{ event.end_date.strftime('%b %d') }}<br>
+                            {{ event.start_time.strftime('%I:%M %p') }} - {{ event.end_time.strftime('%I:%M %p') }}
+                        </p>
+                    </a>
+                    {% else %}
+                    <p class="text-muted">You haven't created any events yet.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h4>Events You're Invited To</h4>
+            </div>
+            <div class="card-body">
+                <div class="list-group">
+                    {% for event in invited_events %}
+                    <a href="{{ url_for('event', event_id=event.id) }}" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">{{ event.name }}</h5>
+                            <small class="text-{{ 'success' if event.invite_status == 'accepted' else 'warning' }}">
+                                {{ event.invite_status }}
+                            </small>
+                        </div>
+                        <p class="mb-1">
+                            {{ event.start_date.strftime('%b %d') }} - {{ event.end_date.strftime('%b %d') }}<br>
+                            {{ event.start_time.strftime('%I:%M %p') }} - {{ event.end_time.strftime('%I:%M %p') }}
+                        </p>
+                        <small>Created by: {{ event.creator_email }}</small>
+                    </a>
+                    {% else %}
+                    <p class="text-muted">You haven't been invited to any events yet.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

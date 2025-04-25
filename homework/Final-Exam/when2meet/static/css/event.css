@@ -1,0 +1,501 @@
+/* Grid Styles */
+.availability-grid {
+    display: grid;
+    gap: 1px;
+    background-color: #ddd;
+    padding: 1px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.grid-header {
+    background-color: #f8f9fa;
+    font-weight: 600;
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.time-slot {
+    background-color: #f8f9fa;
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    padding: 0.75rem;
+    white-space: nowrap;
+    width: 80px;
+    text-align: right;
+    font-size: 0.9rem;
+}
+
+.availability-cell {
+    background-color: white;
+    min-height: 40px;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.2s ease;
+    user-select: none;
+}
+
+.availability-cell:hover {
+    background-color: #f0f0f0;
+}
+
+.availability-status {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 0.2s ease;
+    opacity: 0.3;
+    z-index: 1;
+}
+
+/* Base colors for different statuses */
+.availability-status.available {
+    background-color: #C8E6C9 !important;  /* Light green - default for available */
+}
+
+.availability-status.maybe {
+    background-color: #FFC107 !important;  /* Yellow */
+}
+
+.availability-status.unavailable {
+    background-color: #E0E0E0 !important;  /* Light grey */
+}
+
+/* Color intensity based on count */
+.availability-status[data-count="1"] {
+    opacity: 0.4;
+}
+
+.availability-status[data-count="2"] {
+    opacity: 0.5;
+}
+
+.availability-status[data-count="3"] {
+    opacity: 0.6;
+}
+
+.availability-status[data-count="4"] {
+    opacity: 0.7;
+}
+
+.availability-status[data-count="5"] {
+    opacity: 0.8;
+}
+
+/* Hover effects */
+.availability-cell:hover .availability-status {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+/* Best time highlight */
+.best-time {
+    border: 3px solid var(--primary-color) !important;
+    box-shadow: 0 0 10px rgba(74, 107, 255, 0.3);
+}
+
+/* Personal indicator */
+.personal-indicator {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    z-index: 2;
+}
+
+.personal-indicator.visible {
+    opacity: 1;
+}
+
+.personal-indicator.available {
+    background-color: #4CAF50 !important;  /* Green */
+}
+
+.personal-indicator.maybe {
+    background-color: #FFC107 !important;  /* Yellow */
+}
+
+.personal-indicator.unavailable {
+    background-color: #F44336 !important;  /* Red */
+}
+
+/* Availability Controls */
+.availability-controls {
+    margin-bottom: 20px;
+}
+
+.btn-group .btn {
+    margin-right: 5px;
+}
+
+.btn-group .btn.active {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Animation for Updates */
+@keyframes highlight {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.availability-cell.updated {
+    animation: highlight 0.5s ease;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .availability-grid {
+        font-size: 0.9rem;
+    }
+    
+    .grid-header, .time-slot {
+        padding: 5px;
+    }
+    
+    .btn-group .btn {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
+}
+
+.event-metadata {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.availability-controls {
+    margin-bottom: 1.5rem;
+}
+
+.availability-controls .btn-group {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.availability-controls .btn {
+    padding: 0.5rem 1.5rem;
+    font-weight: 500;
+}
+
+.availability-grid {
+    overflow-x: auto;
+}
+
+.availability-grid table {
+    min-width: 800px;
+    margin-bottom: 0;
+}
+
+.availability-grid th {
+    background-color: #f8f9fa;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    text-align: center;
+    padding: 0.75rem;
+}
+
+.availability-grid .time-slot {
+    background-color: #f8f9fa;
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    padding: 0.75rem;
+    white-space: nowrap;
+}
+
+.availability-cell {
+    position: relative;
+    width: 60px;
+    height: 40px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.availability-cell:hover {
+    background-color: rgba(0,0,0,0.05);
+}
+
+.heatmap-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.card {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border: none;
+}
+
+.card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.card-header h4 {
+    color: #343a40;
+}
+
+#best-time {
+    font-size: 1.1rem;
+    color: #28a745;
+}
+
+/* Event Metadata */
+.event-metadata {
+    margin-bottom: 2rem;
+}
+
+.event-metadata h1 {
+    margin-bottom: 1rem;
+    color: var(--dark-color);
+}
+
+.metadata-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+.metadata-section p {
+    margin-bottom: 0.5rem;
+}
+
+/* Availability Controls */
+.availability-controls {
+    margin-bottom: 1.5rem;
+}
+
+.btn-group {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-group .btn {
+    flex: 1;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 0.2s;
+    color: white;
+}
+
+.btn-group .btn:hover {
+    opacity: 0.9;
+}
+
+.btn-group .btn.active {
+    box-shadow: 0 0 0 2px rgba(74, 107, 255, 0.25);
+    transform: translateY(-1px);
+}
+
+.btn-primary {
+    background-color: var(--success-color);
+}
+
+.btn-warning {
+    background-color: var(--warning-color);
+    color: var(--dark-color);
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+}
+
+/* Availability Grid */
+.availability-grid {
+    overflow-x: auto;
+}
+
+.availability-grid table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.availability-grid th,
+.availability-grid td {
+    padding: 0.5rem;
+    text-align: center;
+    border: 1px solid var(--border-color);
+}
+
+.availability-grid th {
+    background-color: var(--light-color);
+    font-weight: 500;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.time-slot {
+    background-color: var(--light-color);
+    font-weight: 500;
+    position: sticky;
+    left: 0;
+    z-index: 1;
+}
+
+.availability-cell {
+    cursor: pointer;
+    min-width: 100px;
+    height: 50px;
+    position: relative;
+    background-color: white;
+}
+
+.availability-status {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: background-color 0.2s;
+    opacity: 0.3;
+}
+
+.availability-status.unavailable {
+    background-color: var(--danger-color);
+}
+
+.availability-status.available {
+    background-color: var(--success-color);
+}
+
+.availability-status.maybe {
+    background-color: var(--warning-color);
+}
+
+.best-time {
+    border: 3px solid var(--primary-color) !important;
+}
+
+.personal-indicator {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: white;
+    border: 1px solid var(--border-color);
+    z-index: 2;
+}
+
+.personal-indicator.visible {
+    display: block;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .metadata-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .btn-group {
+        flex-direction: column;
+    }
+    
+    .availability-grid {
+        font-size: 0.9rem;
+    }
+    
+    .availability-cell {
+        min-width: 80px;
+        height: 40px;
+    }
+}
+
+/* Event page styles */
+.availability-cell {
+    cursor: pointer;
+    min-width: 100px;
+    height: 50px;
+    position: relative;
+}
+
+.availability-status {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.availability-status.unavailable {
+    background-color: #ff6b6b;
+}
+
+.availability-status.available {
+    background-color: #51cf66;
+}
+
+.availability-status.maybe {
+    background-color: #ffd43b;
+}
+
+.best-time {
+    border: 3px solid #339af0 !important;
+}
+
+.availability-controls {
+    margin-bottom: 20px;
+}
+
+.btn-group .btn {
+    margin-right: 5px;
+}
+
+.btn-group .btn.active {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Event metadata styles */
+.event-metadata {
+    margin-bottom: 2rem;
+}
+
+.metadata-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.metadata-section {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 0.25rem;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .availability-cell {
+        min-width: 80px;
+        height: 40px;
+    }
+    
+    .metadata-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 769px) {
+    .metadata-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

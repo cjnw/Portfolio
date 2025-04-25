@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}CJ's When2Meet{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <nav class="main-nav">
+                <a href="/" class="logo">CJ's When2Meet</a>
+                <div class="nav-links">
+                    {% if current_user.is_authenticated %}
+                        <a href="/dashboard">Dashboard</a>
+                        <a href="/create_event">Create Event</a>
+                        <a href="/logout">Logout</a>
+                    {% else %}
+                        <a href="/login">Login</a>
+                        <a href="/register">Register</a>
+                    {% endif %}
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="flash-messages">
+                        {% for category, message in messages %}
+                            <div class="flash-message {{ category }}">{{ message }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+            
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 CJ Nwogu. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html> 
