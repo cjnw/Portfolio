@@ -59,10 +59,10 @@
 
 /* LinkedIn icon */
 .linkedin-icon {
-    width: 70%;  
-    height: 4vh;
+    width: 70%;
+    height: 5vh;
     display: inline-block;
-    vertical-align: middle; 
+    vertical-align: middle;
 }
 
 /* Show LinkedIn icon and hide text */
@@ -117,6 +117,7 @@
     .linkedin-icon {
         display: none;
     }
+
     .linkedin-text {
         display: inline;
     }

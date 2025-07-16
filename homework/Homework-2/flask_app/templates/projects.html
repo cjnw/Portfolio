@@ -34,6 +34,10 @@
     <script src="/static/main/js/navbar.js"></script>
     <!-- Script to make piano interactive-->
     <script src="/static/piano/js/piano.js"></script>
+
+    <a href="{{ url_for('static', filename='main/files/resume.pdf') }}" download>
+    <button type="button">Download Full Resume</button>
+    </a>
 </body>
 </html>
 {% endblock %}

@@ -1,106 +1,144 @@
-const keys  = document.querySelectorAll(".key"), 
-      note  = document.querySelector(".nowplaying"),
-      hints = document.querySelectorAll(".hints");
-      doom  = 0;
-var   array = [];
 
+document.addEventListener("DOMContentLoaded", function () {
+  // White and black key elements
+  const whiteKeys = document.querySelectorAll(".white-key");
+  const blackKeys = document.querySelectorAll(".black-key");
 
+  // The identifiers for all the notes
+  const whiteNames = ["A", "S", "D", "F", "G", "H", "J", "K", "L", ";"];
+  const blackNames = ["W", "E", "T", "Y", "U", "O", "P"];
 
-const scary = "https://orangefreesounds.com/wp-content/uploads/2020/09/Creepy-piano-sound-effect.mp3?_=1"
+  // Label each white key
+  whiteKeys.forEach((key, i) => {
+    const label = document.createElement("span");
+    label.classList.add("key-label");
+    label.textContent = whiteNames[i] || "";
+    key.appendChild(label);
+  });
 
-const sound = {65:"http://carolinegabriel.com/demo/js-keyboard/sounds/040.wav",
-               87:"http://carolinegabriel.com/demo/js-keyboard/sounds/041.wav",
-               83:"http://carolinegabriel.com/demo/js-keyboard/sounds/042.wav",
-               69:"http://carolinegabriel.com/demo/js-keyboard/sounds/043.wav",
-               68:"http://carolinegabriel.com/demo/js-keyboard/sounds/044.wav",
-               70:"http://carolinegabriel.com/demo/js-keyboard/sounds/045.wav",
-               84:"http://carolinegabriel.com/demo/js-keyboard/sounds/046.wav",
-               71:"http://carolinegabriel.com/demo/js-keyboard/sounds/047.wav",
-               89:"http://carolinegabriel.com/demo/js-keyboard/sounds/048.wav",
-               72:"http://carolinegabriel.com/demo/js-keyboard/sounds/049.wav",
-               85:"http://carolinegabriel.com/demo/js-keyboard/sounds/050.wav",
-               74:"http://carolinegabriel.com/demo/js-keyboard/sounds/051.wav",
-               75:"http://carolinegabriel.com/demo/js-keyboard/sounds/052.wav",
-               79:"http://carolinegabriel.com/demo/js-keyboard/sounds/053.wav",
-               76:"http://carolinegabriel.com/demo/js-keyboard/sounds/054.wav",
-               80:"http://carolinegabriel.com/demo/js-keyboard/sounds/055.wav",
-               186:"http://carolinegabriel.com/demo/js-keyboard/sounds/056.wav"};
-
-// ------------------------------------------------------------------------
-// Listens for a change to the pressed key, and updates the hidden phrase.
-// ------------------------------------------------------------------------
-note.addEventListener('DOMSubtreeModified', function(){
-  const result = note.innerHTML;
-  array += result;
-
-  if (array.length > 8) {
-    array = array.slice(1,9);
-    }
-  console.log('The array'); console.log(array);
-
-  if (array === "WESEEYOU" && doom === 0){
-    doom = 1;
-    document.querySelector(".bkgdc").style.opacity=0;
-    document.querySelector(".bgimg").style.opacity=1;
-    document.querySelector(".keys").style.opacity=0;
-
-
-    const audio = new Audio(scary);
-    audio.currentTime = 0;
-    audio.play();
-    document.getElementById("message").innerHTML = "I have awoken."
-    } 
+  // Label each black key
+  blackKeys.forEach((key, i) => {
+    const label = document.createElement("span");
+    label.classList.add("key-label");
+    label.textContent = blackNames[i] || "";
+    key.appendChild(label);
+  });
 });
 
-// ------------------------------------------------------------------------
-// We use an e here because we selected a set of KEYS!
-// ------------------------------------------------------------------------
-function playNote(e) {
-  //console.log(e);
-  
-  if (doom === 1) return;
+document.addEventListener("DOMContentLoaded", function () {
+  // Listen for key presses
+  document.addEventListener("keydown", (event) => {
+    const hitKey = event.code;
 
-  console.log(e.keyCode);
+    // This key in piano.html
+    const hitPart = document.querySelector(`[data-key="${hitKey}"]`);
 
-  const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
-  if (!key) return;
-  const keyPressed = key.firstChild.innerHTML;
+    if (hitPart) {
+      hitPart.classList.add("hit");
+    }
+  });
 
-  key.classList.add("playing");
-  note.innerHTML = keyPressed;
+  document.addEventListener("keyup", (event) => {
+    // Listen for released keys
+    const clearedKey = event.code;
 
-  // play the audio
-  const audio = new Audio(sound[e.keyCode]);
-  audio.currentTime = 0;
-  audio.play();
+    // This key in piano.html
+    const clearedPart = document.querySelector(`[data-key="${clearedKey}"]`);
 
-}
+    if (clearedPart) {
+      clearedPart.classList.remove("hit");
+    }
+  });
+});
 
-function removeTransition(e) {
-  if (e.propertyName !== "transform") return;
-  this.classList.remove("playing");
-}
+document.addEventListener("DOMContentLoaded", function () {
+  // Sound mapping
+  const sound = {
+    65: "http://carolinegabriel.com/demo/js-keyboard/sounds/040.wav",
+    87: "http://carolinegabriel.com/demo/js-keyboard/sounds/041.wav",
+    83: "http://carolinegabriel.com/demo/js-keyboard/sounds/042.wav",
+    69: "http://carolinegabriel.com/demo/js-keyboard/sounds/043.wav",
+    68: "http://carolinegabriel.com/demo/js-keyboard/sounds/044.wav",
+    70: "http://carolinegabriel.com/demo/js-keyboard/sounds/045.wav",
+    84: "http://carolinegabriel.com/demo/js-keyboard/sounds/046.wav",
+    71: "http://carolinegabriel.com/demo/js-keyboard/sounds/047.wav",
+    89: "http://carolinegabriel.com/demo/js-keyboard/sounds/048.wav",
+    72: "http://carolinegabriel.com/demo/js-keyboard/sounds/049.wav",
+    85: "http://carolinegabriel.com/demo/js-keyboard/sounds/050.wav",
+    74: "http://carolinegabriel.com/demo/js-keyboard/sounds/051.wav",
+    75: "http://carolinegabriel.com/demo/js-keyboard/sounds/052.wav",
+    79: "http://carolinegabriel.com/demo/js-keyboard/sounds/053.wav",
+    76: "http://carolinegabriel.com/demo/js-keyboard/sounds/054.wav",
+    80: "http://carolinegabriel.com/demo/js-keyboard/sounds/055.wav",
+    186: "http://carolinegabriel.com/demo/js-keyboard/sounds/056.wav"
+  };
 
-// -------------------------------------------------------------------------
-// FOR THE HINTS
-// --------------------------------------------------------------------------
-function hintsOn(e, index) {
-  //console.log(e)
-  console.log(e.fromElement.id)
-  const key = document.querySelector(`.key[data-key="${e.fromElement.id}"]`);
-  key/
-  console.log(key)
-  if (!key) return;
+  /* The sequence of input keys from user */
+  let KeystrokeInput = "";
 
-  key.setAttribute("background", "red")
-  key.setAttribute("style", "transition-delay:" + 50 + "ms");
-}
+  /* The string that summons the Great Old One if typed */
+  const thePhrase = "weseeyou";
 
-//hints.forEach(hintsOn);
-keys.forEach(key => key.addEventListener("transitionend", removeTransition));
+  // Function to play sound
+  function playSound(keyCode) {
+    if (sound[keyCode]) {
+      const audio = new Audio(sound[keyCode]);
+      audio.play();
+    }
+  }
 
-//This is what binds 'e'.
-window.addEventListener("keydown", playNote);
-window.addEventListener("mouseover", hintsOn);
+  // Highlight the hit key
+  function highlightKey(keyCode) {
+    const keyObject = document.querySelector(`[data-key="${keyCode}"]`);
+    if (keyObject) {
+      keyObject.classList.add("hit");
+      setTimeout(() => keyObject.classList.remove("hit"), 200);
+    }
+  }
 
+  // Awakens the Great Old One
+  function awakenGreatOldOne() {
+    const piano = document.querySelector(".piano-container");
+    const greatOldOne = document.createElement("img");
+    greatOldOne.src = "/static/main/images/greatone.jpeg";  // Use the uploaded file
+    greatOldOne.classList.add("great-old-one");
 
+    // Replace the piano with the image
+    piano.style.transition = "opacity 2s";
+    piano.style.opacity = "0";
+
+    setTimeout(() => {
+      piano.replaceWith(greatOldOne);
+      // Play audio
+      const audio = new Audio("/static/main/images/Creepy-piano-sound-effect.mp3");
+      audio.play();
+    }, 2000);
+
+    // Remove event listener to disable key input
+    document.removeEventListener("keydown", handleKeyPress);
+  }
+
+  // Handle the keystrokes
+  function handleKeyPress(event) {
+    const key = event.key.toLowerCase();
+    KeystrokeInput += key;
+
+    // Check if the input sequence matches "weseeyou"
+    if (KeystrokeInput.includes(thePhrase)) {
+      awakenGreatOldOne();
+      return;
+    }
+
+    // Limit the stored sequence to the length of "weseeyou" to avoid unnecessary memory usage
+    if (KeystrokeInput.length > thePhrase.length) {
+      KeystrokeInput = KeystrokeInput.slice(-thePhrase.length);
+    }
+
+    // Play sound & highlight keys
+    playSound(event.keyCode);
+    highlightKey(event.keyCode);
+  }
+
+  // Listen for any keystrokes
+  document.addEventListener("keydown", handleKeyPress);
+});

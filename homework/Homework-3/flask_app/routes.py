@@ -35,18 +35,18 @@ def getDecryptedUser():
             return session['email']
     return 'Unknown'
 
-@app.route('/login')
-def login():
-    # Reset login failure count on each new attempt
-    session.pop('failure_count', None)
+# @app.route('/login')
+# def login():
+#     # Reset login failure count on each new attempt
+#     session.pop('failure_count', None)
 
-    return render_template('login.html')
+#     return render_template('login.html')
 
-@app.route('/logout')
-def logout():
-    # Clear the session data
-	session.pop('email', default=None)
-	return redirect('/')
+# @app.route('/logout')
+# def logout():
+#     # Clear the session data
+# 	session.pop('email', default=None)
+# 	return redirect('/')
 
 @app.route('/processlogin', methods = ["POST","GET"])
 def processlogin():
