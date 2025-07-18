@@ -1,0 +1,50 @@
+{% extends 'shared/layout.html' %}
+{% block maincontent %}
+
+
+<body>
+    <main>
+        <!-- Two columns about me -->
+        <div class="about-container">
+            <!-- Photo -->
+            <div class="about-photo">
+                <img src="/static/main/images/grad-point.jpg" alt="Chinenye Nwogu" loading="lazy">
+            </div>
+    
+            <!-- Description -->
+            <div class="about-text">
+                <h1>CJ Nwogu</h1>
+                <p class="description">
+                is a software engineer who graduated with a Bachelor's degree in Computer Science at Michigan State University. With experience in embedded software development, Android app development, and full-stack development, he is seeking full-time employment in industry.
+                </p>
+            </div>
+        </div>
+    
+        <!-- Fun fact -->
+        <!-- <div class="fun-fact">
+            <h2>A fun fact about me</h2>
+            <p>{{fun_fact}}</p>
+        </div> -->
+
+        <!-- Contact links -->
+        <div class="contact-links">
+          <a href="mailto:chinenyejnwogu@gmail.com">
+            <img class="email-icon" src="/static/main/images/social-gmail.png" alt="Email" loading="lazy">
+          </a>
+
+          <a href="https://github.com/cjnw" target="_blank">
+            <img class="github-icon" src="/static/main/images/social-github.png" alt="GitHub" loading="lazy">
+          </a>
+
+          <a href="https://www.linkedin.com/in/chinenye-nwogu-190615222/" target="_blank">
+            <img class="linkedin-bottom-icon" src="/static/main/images/social-linkedin.png" alt="LinkedIn" loading="lazy">
+          </a>
+        </div>
+    </main>
+
+    
+    <!-- Script to hide navbar behind menu icon -->
+    <script src="/static/main/js/navbar.js"></script>
+</body>
+</html>
+{% endblock %}
