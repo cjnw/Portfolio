@@ -19,52 +19,66 @@
 </head>
 
 <body>
-  <!-- Header -->
-  <header class="banner">
-  </header>
+  <div class="page-wrapper">
+    <!-- Header -->
+    <header class="banner">
+    </header>
 
-  <!-- Site navigation bar-->
-  <nav class="navbar">
-    <div class="nav-title">
-      {% if user %}
-          <p>Logged in as {{ user }}</p>
-      {% else %}
-          <p>CJ Nwogu</p>
-      {% endif %}
-    </div>
-      <!-- Hamburger menu -->
-      <div class="menu-icon">
-          <img src="/static/main/images/menu-bar.png" alt="hamburger" loading="lazy">
+    <!-- Site navigation bar-->
+    <nav class="navbar">
+      <div class="nav-title">
+        {% if user %}
+            <p>Logged in as {{ user }}</p>
+        {% else %}
+            <p>CJ Nwogu</p>
+        {% endif %}
       </div>
-  
-      <!-- Navbar links -->
-      <ul class="nav-links">
-          <li><a href="/home">Home</a></li>
-          <li><a href="/projects">Projects</a></li>
-          <li><a href="/resume">Experience</a></li>
-          <li>
-              <a class="linkedin" href="https://www.linkedin.com/in/chinenye-nwogu-190615222/" target="_blank">
-                  <img class="linkedin-icon" src="/static/main/images/social-linkedin.png" alt="LinkedIn" loading="lazy">
-                  <span class="linkedin-text">LinkedIn</span>
-              </a>
-          </li>
-      </ul>
-  </nav>
+        <!-- Hamburger menu -->
+        <div class="menu-icon">
+            <img src="/static/main/images/menu-bar.png" alt="hamburger" loading="lazy">
+        </div>
+    
+        <!-- Navbar links -->
+        <ul class="nav-links">
+            <li><a href="/home">Home</a></li>
+            <li><a href="/projects">Projects</a></li>
+            <li><a href="/resume">Experience</a></li>
+            <li>
+                <a class="linkedin" href="https://www.linkedin.com/in/chinenye-nwogu-190615222/" target="_blank">
+                    <img class="linkedin-icon" src="/static/main/images/social-linkedin.png" alt="LinkedIn" loading="lazy">
+                    <span class="linkedin-text">LinkedIn</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 
-    <article>
+      <article>
 
-    <!-- The main content  -->
-    <main>
-      {% block maincontent %}{% endblock %}
-    </main>
+        <!-- The main content  -->
+        <main>
+          {% block maincontent %}{% endblock %}
+        </main>
 
-    <!-- The footer of the file -->
-    <footer>
-        <p>© 2025 Chinenye Nwogu</p>
-    </footer>
-    </article>
+        <!-- The footer of the file -->
+        <footer>
+          <!-- Contact links -->
+          <div class="contact-links">
+            <a href="mailto:chinenyejnwogu@gmail.com">
+              <img class="email-icon" src="/static/main/images/social-gmail.png" alt="Email" loading="lazy">
+            </a>
 
+            <a href="https://github.com/cjnw" target="_blank">
+              <img class="github-icon" src="/static/main/images/social-github.png" alt="GitHub" loading="lazy">
+            </a>
 
+            <a href="https://www.linkedin.com/in/chinenye-nwogu-190615222/" target="_blank">
+              <img class="linkedin-bottom-icon" src="/static/main/images/social-linkedin.png" alt="LinkedIn" loading="lazy">
+            </a>
+          </div>
+            <p>© 2025 Chinenye Nwogu</p>
+        </footer>
+      </article>
+  </div>
 </body>
 
 </html>

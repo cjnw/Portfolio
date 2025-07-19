@@ -106,7 +106,7 @@ def home():
 def resume():
 	resume_data = db.getResumeData()
 	pprint(resume_data)
-	return render_template('resume.html', resume_data = resume_data)
+	return render_template('experience.html', resume_data = resume_data)
 
 @app.route('/processfeedback', methods = ['GET','POST'])
 def processfeedback():

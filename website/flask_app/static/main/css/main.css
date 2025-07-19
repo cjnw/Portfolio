@@ -1,3 +1,16 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 body,
 html {
   font-family: Arial, sans-serif;
@@ -74,18 +87,21 @@ main {
 }
 
 .linkedin-bottom-icon {
+  padding: 20%;
   width: 40px;
   height: 40px;
   vertical-align: middle;
 }
 
 .email-icon {
+  padding: 20%;
   width: 40px;
   height: 40px;
   vertical-align: middle;
 }
 
 .github-icon {
+  padding: 20%;
   width: 40px;
   height: 40px;
   vertical-align: middle;
@@ -135,6 +151,7 @@ main {
 }
 
 .institution-name {
+  padding: 5px;
   font-size: 1.4rem;
   font-weight: bold;
   margin: 0;
@@ -259,6 +276,10 @@ hr {
   /* Increase or decrease 24px for more/less space */
   display: inline-block;
   vertical-align: middle;
+}
+
+.projects-intro {
+  padding: 5%
 }
 
 .skill-bar {

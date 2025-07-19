@@ -1,45 +1,53 @@
 {% extends 'shared/layout.html' %}
 {% block maincontent %}
 
-<body>
+<div class="projects-intro">
+    <h1>These are some of my projects</h1>
+</div>
 
-    <main>
-        <!-- Projects summary-->
-        <div class="projects-intro">
-            <h1>These are some of my projects</h1>
-        </div>
+<!-- Piano project information / two columns about my project -->
+<div class="projects-container" style="display: flex; align-items: center; margin-bottom: 2rem;">
+    <div class="piano-image" style="flex: 0 0 180px;">
+        <a href="/piano">
+            <img src="/static/main/images/piano.jpeg" alt="Piano" loading="lazy" style="width: 160px; height: auto; border-radius: 12px;">
+        </a>
+    </div>
+    <div class="projects-information" style="margin-left: 2rem;">
+        <h2>Piano</h2>
+        <p>I developed a piano web app using Javascript, HTML, and CSS.</p>
+        <a href="/piano" class="projects-link">Click here</a>
+    </div>
+</div>
 
-        <!-- Piano project information / two columns about my project -->
-        <div class="projects-container">
-            <div class="piano-image">
-                <a href="/piano">
-                    <img src="/static/main/images/piano.jpeg" alt="Piano" loading="lazy">
-                </a>
-            </div>
-            <div class="projects-information">
-                <h2>Piano</h2>
-                <p>I developed a piano web app using Javascript, HTML, and CSS.</p>
-                <a href="/piano" class="projects-link">Click here</a>
-            </div>
-        </div>
-        
-    </main>
+<!-- Other projects -->
+<div class="projects-list" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 900px; margin: 0 auto;">
+    <div class="project-blurb" style="background:#f7f6fa;padding:18px 16px;border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,0.06);">
+        <h3 style="margin-top:0;margin-bottom:0.5rem;">KitCrawler</h3>
+        <p style="margin:0 0 0.5rem 0;">
+            KitCrawler is a Node.js web app I built to help users compare prices on athletic clothing across five major retailers in real time. Using Python-based web scrapers with BeautifulSoup, it dynamically updates a SQL database for every search. The result is a clean, responsive frontend that cuts manual price hunting by up to 90%. I designed this to give users a fast, centralized view of the best athletic gear deals online — no tabs, no hassle.
+        </p>
+        <a href="#" style="color:#4d2e7f;text-decoration:underline;"></a>
+    </div>
+    <div class="project-blurb" style="background:#f7f6fa;padding:18px 16px;border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,0.06);">
+        <h3 style="margin-top:0;margin-bottom:0.5rem;">Safe Journey AI 2.0</h3>
+        <p style="margin:0 0 0.5rem 0;">
+            Safe Journey AI is an Android Auto-compatible navigation app developed in Kotlin, built to help Michigan drivers choose safer routes. It presents users with three route options prioritized by safety, thanks to Mapbox SDK and a sleek Jetpack Compose UI. I also added a “Discover” feature that finds gas stations, EV chargers, and parking along the way — all while letting users plan up to 10 stops. It’s more than just directions — it’s peace of mind on the road.
+        </p>
+        <a href="https://github.com/cjnw/SafeJourney-AI-2.0" style="color:#4d2e7f;text-decoration:underline;">Learn more</a>
+    </div>
+    <div class="project-blurb" style="background:#f7f6fa;padding:18px 16px;border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,0.06);">
+        <h3 style="margin-top:0;margin-bottom:0.5rem;">Custom Audio Synthesizer</h3>
+        <p style="margin:0 0 0.5rem 0;">
+            Developed an advanced synthesizer in C++ featuring multi-instrument support, real-time sound manipulation, and custom sound effects. This project allowed me to deepen my understanding of audio synthesis and engineering while building practical skills in C++.
+        </p>
+        <a href="https://github.com/cjnw/Synthesizer/tree/master" style="color:#4d2e7f;text-decoration:underline;">Learn more</a>
+    </div>
+</div>
 
-    <footer>
-        <!-- Copyright -->
-        <p class="copyright"> © Chinenye Nwogu</p>
-    </footer>
-    
-    <!-- Script to make navbar responsive -->
-    <script src="/static/main/js/navbar.js"></script>
-    <!-- Script to make piano interactive-->
-    <script src="/static/piano/js/piano.js"></script>
-</body>
-
-<div>
-  <a href="/website/flask_app/static/main/files/resume.pdf" download>
+<!-- Download Resume Button -->
+<div style="text-align:center; margin: 2.5rem 0 1rem 0;">
+  <a href="{{ url_for('static', filename='main/files/resume.pdf') }}" download>
     <button type="button">Download Full Resume</button>
   </a>
 </div>
-</html>
 {% endblock %}

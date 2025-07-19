@@ -52,6 +52,8 @@
 
 /* LinkedIn */
 .linkedin {
+    display: flex;
+    align-items: center;
     margin-left: 2vw;
     font-size: clamp(0.8rem, 1.5vw, 1.2rem);
     font-weight: bold;
@@ -59,10 +61,15 @@
 
 /* LinkedIn icon */
 .linkedin-icon {
-    width: 70%;
-    height: 5vh;
+    height: 2em;
+    /* Use em for better alignment with text */
+    width: auto;
     display: inline-block;
     vertical-align: middle;
+    margin-bottom: 0;
+    /* Remove any offset */
+    margin-top: 0;
+    object-fit: contain;
 }
 
 

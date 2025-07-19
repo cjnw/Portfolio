@@ -7,8 +7,8 @@
 
 /* header banner */
 .banner {
-    width: 100%; 
-    height: 10vh; 
+    width: 100%;
+    height: 15vh;
     background-image: url('/static/main/images/banner.jpg');
     background-size: cover;
     background-position: center;
