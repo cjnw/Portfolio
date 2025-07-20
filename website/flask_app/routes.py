@@ -1,15 +1,15 @@
 # Author: Prof. MM Ghassemi <ghassem3@msu.edu>
 from flask import current_app as app
+from flask import send_from_directory
 from flask import render_template, redirect, request, session, url_for, copy_current_request_context
 from flask_socketio import SocketIO, emit, join_room, leave_room, close_room, rooms, disconnect
-from .utils.database.database  import database
 from werkzeug.datastructures   import ImmutableMultiDict
 from pprint import pprint
 import json
 import random
 import functools
 from . import socketio
-db = database()
+from flask_app.utils.database.database import get_resume_data
 
 
 #######################################################################################
@@ -104,7 +104,7 @@ def home():
 
 @app.route('/resume')
 def resume():
-	resume_data = db.getResumeData()
+	resume_data = get_resume_data()
 	pprint(resume_data)
 	return render_template('experience.html', resume_data = resume_data)
 

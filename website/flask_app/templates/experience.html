@@ -2,7 +2,7 @@
 {% block maincontent %}
 
 <div class="resume-container">
-  {% for inst_id, inst in resume_data.items() %}
+  {% for inst in resume_data.institutions %}
   <section class="institution">
     <!-- Institution header row: name on left, location on right -->
     <div class="institution-header">
@@ -30,9 +30,9 @@
       <p class="institution-summary">Address: {{ inst.address }}</p>
     {% endif %}
 
-    <!-- Positions -->
-    {% if inst.positions %}
-      {% for pos_id, pos in inst.positions.items() %}
+    <!-- Positions for this institution -->
+    {% set inst_positions = resume_data.positions | selectattr('institution_id', 'equalto', inst.id) | list %}
+    {% for pos in inst_positions %}
       <article class="position">
         <div class="position-header">
           <div class="left">
@@ -40,17 +40,8 @@
           </div>
           <div class="right">
             <p>
-              {% if pos.start_date and pos.start_date != 'NULL' %}
-                {{ pos.start_date }}
-              {% else %}
-                N/A
-              {% endif %}
-              -
-              {% if pos.end_date and pos.end_date != 'NULL' %}
-                {{ pos.end_date }}
-              {% else %}
-                Current
-              {% endif %}
+              {{ pos.start_date if pos.start_date else 'N/A' }} -
+              {{ pos.end_date if pos.end_date else 'Current' }}
             </p>
           </div>
         </div>
@@ -59,31 +50,32 @@
           <p class="position-responsibilities">{{ pos.responsibilities }}</p>
         {% endif %}
 
-        <!-- Experiences -->
-        {% if pos.experiences %}
+        <!-- Experiences for this position -->
+        {% set pos_experiences = resume_data.experiences | selectattr('position_id', 'equalto', pos.id) | list %}
+        {% if pos_experiences %}
           <ul class="experience-list">
-            {% for exp_id, exp in pos.experiences.items() %}
+            {% for exp in pos_experiences %}
             <li class="experience-item">
               {% if exp.hyperlink and exp.hyperlink|lower != 'null' %}
                 <strong><a href="{{ exp.hyperlink }}" target="_blank">{{ exp.name }}</a></strong>
               {% else %}
                 <strong>{{ exp.name }}</strong>
               {% endif %}
-              
               {% if exp.start_date or exp.end_date %}
                 <span class="experience-dates">
                   ({{ exp.start_date if exp.start_date else 'N/A' }} - 
                    {{ exp.end_date if exp.end_date else 'N/A' }})
                 </span>
               {% endif %}
-
               {% if exp.description and exp.description != 'NULL' %}
                 <div class="experience-desc">{{ exp.description }}</div>
               {% endif %}
 
-              {% if exp.skills %}
+              <!-- Skills for this experience -->
+              {% set exp_skills = resume_data.skills | selectattr('experience_id', 'equalto', exp.id) | list %}
+              {% if exp_skills %}
                 <ul class="skill-list">
-                  {% for skill_id, skill in exp.skills.items() %}
+                  {% for skill in exp_skills %}
                     {% if skill.name and skill.name != 'NULL' %}
                       <li class="skill-item">{{ skill.name }}</li>
                     {% endif %}
@@ -95,8 +87,7 @@
           </ul>
         {% endif %}
       </article>
-      {% endfor %}
-    {% endif %}
+    {% endfor %}
   </section>
   {% endfor %}
 </div> <!-- close .resume-container -->

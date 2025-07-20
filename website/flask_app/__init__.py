@@ -25,16 +25,6 @@ def create_app(debug=False):
 	app.secret_key = 'AKWNF1231082fksejfOSEHFOISEHF24142124124124124iesfhsoijsopdjf'
 	# ----------------------------------------------
 
-	from .utils.database.database import database
-	db = database()
-	db.createTables(purge=True)
-	
-	# NEW IN HOMEWORK 3 ----------------------------
-	# This will create a user
-	# db.createUser(email='owner@email.com' ,password='password', role='owner')
-	# db.createUser(email='guest@email.com' ,password='password', role='guest')
-	# ----------------------------------------------
-
 	socketio.init_app(app)
 
 	with app.app_context():
